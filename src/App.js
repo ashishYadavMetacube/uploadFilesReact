@@ -7,7 +7,7 @@ function App() {
     const [selectedFile, setSelectedFile] = useState(null);
 
     const fetchFiles = async () => {
-        const response = await axios.get('http://localhost:8000/files/');
+        const response = await axios.get('http://testapp-2101952692:8000/files/');
         setFiles(response.data);
     };
 
@@ -19,13 +19,13 @@ function App() {
         e.preventDefault();
         const formData = new FormData();
         formData.append('file', selectedFile);
-        await axios.post('http://localhost:8000/upload/', formData);
+        await axios.post('http://testapp-2101952692:8000/upload/', formData);
         fetchFiles();
         setSelectedFile(null);
     };
 
     const handleFileDelete = async (fileId) => {
-        await axios.delete(`http://localhost:8000/files/${fileId}`);
+        await axios.delete(`http://testapp-2101952692:8000/files/${fileId}`);
         fetchFiles();
     };
 
@@ -34,7 +34,7 @@ function App() {
     }, []);
 
     const getFileUrl = (filename) => {
-        return `http://localhost:8000/files/${filename}`;
+        return `http://testapp-2101952692:8000/files/${filename}`;
     };
 
     return (
